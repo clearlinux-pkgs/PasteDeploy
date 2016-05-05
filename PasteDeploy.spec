@@ -4,7 +4,7 @@
 #
 Name     : PasteDeploy
 Version  : 1.5.2
-Release  : 13
+Release  : 14
 URL      : https://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.2.tar.gz
 Source0  : https://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.2.tar.gz
 Summary  : Load, configure, and compose WSGI applications and servers
@@ -43,16 +43,20 @@ python3 setup.py build -b py3
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=intel.com,localhost
-python2 setup.py test
+export no_proxy=localhost,127.0.0.1,0.0.0.0
+PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test
 %install
 rm -rf %{buildroot}
-python2 setup.py build -b py2 install --root=%{buildroot}
-python3 setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot}
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 
 %files
 %defattr(-,root,root,-)
 
 %files python
 %defattr(-,root,root,-)
+%exclude /usr/lib/python2.7/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/sampleapp.py_tmpl
+%exclude /usr/lib/python2.7/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/wsgiapp.py_tmpl
+%exclude /usr/lib/python3.5/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/sampleapp.py_tmpl
+%exclude /usr/lib/python3.5/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/wsgiapp.py_tmpl
 /usr/lib/python*/*

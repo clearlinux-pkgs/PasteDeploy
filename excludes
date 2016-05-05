@@ -1,2 +1,9 @@
 # This file contains the output files that need %exclude. Full path
 # names, one per line.
+/usr/lib/python3.5/site-packages/paste/deploy/paster_templates/paste_deploy/+package+
+/usr/lib/python3.5/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/sampleapp.py_tmpl
+/usr/lib/python3.5/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/wsgiapp.py_tmpl
+/usr/lib/python2.7/site-packages/paste/deploy/paster_templates/paste_deploy/+package+
+/usr/lib/python2.7/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/sampleapp.py_tmpl
+/usr/lib/python2.7/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/wsgiapp.py_tmpl
+
