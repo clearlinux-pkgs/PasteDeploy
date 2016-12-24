@@ -4,7 +4,7 @@
 #
 Name     : PasteDeploy
 Version  : 1.5.2
-Release  : 14
+Release  : 15
 URL      : https://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.2.tar.gz
 Source0  : https://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.2.tar.gz
 Summary  : Load, configure, and compose WSGI applications and servers
@@ -37,6 +37,7 @@ python components for the PasteDeploy package.
 %setup -q -n PasteDeploy-1.5.2
 
 %build
+export LANG=C
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -57,6 +58,6 @@ python3 -tt setup.py build -b py3 install --root=%{buildroot}
 %defattr(-,root,root,-)
 %exclude /usr/lib/python2.7/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/sampleapp.py_tmpl
 %exclude /usr/lib/python2.7/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/wsgiapp.py_tmpl
-%exclude /usr/lib/python3.5/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/sampleapp.py_tmpl
-%exclude /usr/lib/python3.5/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/wsgiapp.py_tmpl
+%exclude /usr/lib/python3.6/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/sampleapp.py_tmpl
+%exclude /usr/lib/python3.6/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/wsgiapp.py_tmpl
 /usr/lib/python*/*
