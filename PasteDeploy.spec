@@ -4,7 +4,7 @@
 #
 Name     : PasteDeploy
 Version  : 1.5.2
-Release  : 16
+Release  : 17
 URL      : https://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.2.tar.gz
 Source0  : https://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.2.tar.gz
 Summary  : Load, configure, and compose WSGI applications and servers
