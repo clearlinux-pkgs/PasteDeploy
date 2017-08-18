@@ -1,5 +1,5 @@
 PKG_NAME := PasteDeploy
-URL := https://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.2.tar.gz
+URL := http://pypi.debian.net/PasteDeploy/PasteDeploy-1.5.2.tar.gz
 
 
 include ../common/Makefile.common

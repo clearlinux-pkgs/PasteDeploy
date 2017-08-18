@@ -4,13 +4,14 @@
 #
 Name     : PasteDeploy
 Version  : 1.5.2
-Release  : 17
-URL      : https://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.2.tar.gz
-Source0  : https://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.2.tar.gz
+Release  : 18
+URL      : http://pypi.debian.net/PasteDeploy/PasteDeploy-1.5.2.tar.gz
+Source0  : http://pypi.debian.net/PasteDeploy/PasteDeploy-1.5.2.tar.gz
 Summary  : Load, configure, and compose WSGI applications and servers
 Group    : Development/Tools
 License  : MIT
 Requires: PasteDeploy-python
+Requires: Paste
 BuildRequires : nose-python
 BuildRequires : pbr
 BuildRequires : pip
@@ -19,10 +20,7 @@ BuildRequires : python3-dev
 BuildRequires : setuptools
 
 %description
-This tool provides code to load WSGI applications and servers from
 URIs; these URIs can refer to Python Eggs for INI-style configuration
-files.  `Paste Script <http://pythonpaste.org/script>`_ provides
-commands to serve applications based on this configuration file.
 
 %package python
 Summary: python components for the PasteDeploy package.
@@ -37,8 +35,11 @@ python components for the PasteDeploy package.
 %setup -q -n PasteDeploy-1.5.2
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1484561383
+export SOURCE_DATE_EPOCH=1503071435
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -46,12 +47,15 @@ python3 setup.py build -b py3
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test
+PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1484561383
+export SOURCE_DATE_EPOCH=1503071435
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+echo ----[ mark ]----
+cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
@@ -62,4 +66,5 @@ python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 %exclude /usr/lib/python2.7/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/wsgiapp.py_tmpl
 %exclude /usr/lib/python3.6/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/sampleapp.py_tmpl
 %exclude /usr/lib/python3.6/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/wsgiapp.py_tmpl
-/usr/lib/python*/*
+/usr/lib/python2*/*
+/usr/lib/python3*/*
