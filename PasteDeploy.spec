@@ -4,12 +4,13 @@
 #
 Name     : PasteDeploy
 Version  : 1.5.2
-Release  : 19
+Release  : 20
 URL      : http://pypi.debian.net/PasteDeploy/PasteDeploy-1.5.2.tar.gz
 Source0  : http://pypi.debian.net/PasteDeploy/PasteDeploy-1.5.2.tar.gz
 Summary  : Load, configure, and compose WSGI applications and servers
 Group    : Development/Tools
 License  : MIT
+Requires: PasteDeploy-legacypython
 Requires: PasteDeploy-python
 Requires: Paste
 BuildRequires : nose-python
@@ -22,9 +23,18 @@ BuildRequires : setuptools
 %description
 URIs; these URIs can refer to Python Eggs for INI-style configuration
 
+%package legacypython
+Summary: legacypython components for the PasteDeploy package.
+Group: Default
+
+%description legacypython
+legacypython components for the PasteDeploy package.
+
+
 %package python
 Summary: python components for the PasteDeploy package.
 Group: Default
+Requires: PasteDeploy-legacypython
 Provides: pastedeploy-python
 
 %description python
@@ -39,7 +49,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1503125855
+export SOURCE_DATE_EPOCH=1505055183
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -49,7 +59,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1503125855
+export SOURCE_DATE_EPOCH=1505055183
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -60,11 +70,14 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
-%files python
+%files legacypython
 %defattr(-,root,root,-)
 %exclude /usr/lib/python2.7/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/sampleapp.py_tmpl
 %exclude /usr/lib/python2.7/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/wsgiapp.py_tmpl
+/usr/lib/python2*/*
+
+%files python
+%defattr(-,root,root,-)
 %exclude /usr/lib/python3.6/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/sampleapp.py_tmpl
 %exclude /usr/lib/python3.6/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/wsgiapp.py_tmpl
-/usr/lib/python2*/*
 /usr/lib/python3*/*
