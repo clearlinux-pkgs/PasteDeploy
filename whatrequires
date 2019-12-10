@@ -1,3 +1,9 @@
 # This file contains recursive sources that require this package
 WebTest
+barbican
+cinder
+glance
+neutron
+nova
+oslo.service
 pyquery
