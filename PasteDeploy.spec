@@ -4,7 +4,7 @@
 #
 Name     : PasteDeploy
 Version  : 1.5.2
-Release  : 42
+Release  : 43
 URL      : http://pypi.debian.net/PasteDeploy/PasteDeploy-1.5.2.tar.gz
 Source0  : http://pypi.debian.net/PasteDeploy/PasteDeploy-1.5.2.tar.gz
 Summary  : Load, configure, and compose WSGI applications and servers
@@ -57,7 +57,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576012556
+export SOURCE_DATE_EPOCH=1576020550
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -81,12 +81,8 @@ echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
 ## Remove excluded files
-rm -f %{buildroot}/usr/lib/python3.7/site-packages/paste/deploy/paster_templates/paste_deploy/+package+
-rm -f %{buildroot}/usr/lib/python3.7/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/sampleapp.py_tmpl
-rm -f %{buildroot}/usr/lib/python3.7/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/wsgiapp.py_tmpl
-rm -f %{buildroot}/usr/lib/python2.7/site-packages/paste/deploy/paster_templates/paste_deploy/+package+
-rm -f %{buildroot}/usr/lib/python2.7/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/sampleapp.py_tmpl
-rm -f %{buildroot}/usr/lib/python2.7/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/wsgiapp.py_tmpl
+rm -f %{buildroot}/usr/lib/python3.*/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/sampleapp.py_tmpl
+rm -f %{buildroot}/usr/lib/python3.*/site-packages/paste/deploy/paster_templates/paste_deploy/+package+/wsgiapp.py_tmpl
 
 %files
 %defattr(-,root,root,-)
