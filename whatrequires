@@ -3,7 +3,9 @@ WebTest
 barbican
 cinder
 glance
+heat
 neutron
 nova
 oslo.service
 pyquery
+swift
