@@ -4,7 +4,7 @@
 #
 Name     : PasteDeploy
 Version  : 1.5.2
-Release  : 45
+Release  : 46
 URL      : http://pypi.debian.net/PasteDeploy/PasteDeploy-1.5.2.tar.gz
 Source0  : http://pypi.debian.net/PasteDeploy/PasteDeploy-1.5.2.tar.gz
 Summary  : Load, configure, and compose WSGI applications and servers
@@ -19,10 +19,7 @@ BuildRequires : buildreq-distutils3
 BuildRequires : nose
 
 %description
-This tool provides code to load WSGI applications and servers from
 URIs; these URIs can refer to Python Eggs for INI-style configuration
-files.  `Paste Script <http://pythonpaste.org/script>`_ provides
-commands to serve applications based on this configuration file.
 
 %package license
 Summary: license components for the PasteDeploy package.
@@ -46,7 +43,7 @@ python components for the PasteDeploy package.
 Summary: python3 components for the PasteDeploy package.
 Group: Default
 Requires: python3-core
-Provides: pypi(PasteDeploy)
+Provides: pypi(pastedeploy)
 
 %description python3
 python3 components for the PasteDeploy package.
@@ -61,8 +58,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583201003
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1583519913
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
