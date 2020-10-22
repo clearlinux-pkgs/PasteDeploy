@@ -4,7 +4,7 @@
 #
 Name     : PasteDeploy
 Version  : 1.5.2
-Release  : 47
+Release  : 48
 URL      : http://pypi.debian.net/PasteDeploy/PasteDeploy-1.5.2.tar.gz
 Source0  : http://pypi.debian.net/PasteDeploy/PasteDeploy-1.5.2.tar.gz
 Summary  : Load, configure, and compose WSGI applications and servers
@@ -44,6 +44,7 @@ Summary: python3 components for the PasteDeploy package.
 Group: Default
 Requires: python3-core
 Provides: pypi(pastedeploy)
+Requires: pypi(setuptools)
 
 %description python3
 python3 components for the PasteDeploy package.
@@ -58,11 +59,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583519913
+export SOURCE_DATE_EPOCH=1603397832
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
